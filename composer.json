@@ -1,0 +1,34 @@
+{
+    "name": "tamkeen-tech/laravel-enum-state-machine",
+    "description": "Control your state using enums",
+    "keywords": [
+        "enum",
+        "state",
+        "machine",
+        "laravel"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "TamkeenTech\\LaravelEnumStateMachine\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Shreif Ashraf",
+            "email": "sh.ashraf@tamkeentech.sa"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^9.0",
+        "php": "^8.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TamkeenTech\\LaravelEnumStateMachine\\LaravelEnumStateMachinesProvider"
+            ]
+        }
+    }
+}
