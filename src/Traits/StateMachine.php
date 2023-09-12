@@ -27,4 +27,9 @@ trait StateMachine
     {
         return in_array($this, $this->initialState());
     }
+
+    public function is(self $status): bool
+    {
+        return $this === $status;
+    }
 }
