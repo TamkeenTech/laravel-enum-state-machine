@@ -4,7 +4,7 @@
     "keywords": [
         "enum",
         "state",
-        "machine",
+        "state-machine",
         "laravel"
     ],
     "type": "library",
@@ -14,15 +14,24 @@
             "TamkeenTech\\LaravelEnumStateMachine\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "TamkeenTech\\LaravelEnumStateMachine\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Shreif Ashraf",
-            "email": "sh.ashraf@tamkeentech.sa"
+            "email": "sh.ashraf@tamkeentech.sa",
+            "homepage": "https://theashraf.dev"
         }
     ],
     "require": {
-        "laravel/framework": "^9.0|^10.0",
-        "php": "^8.0"
+        "laravel/framework": "^10.0|^11.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.0"
     },
     "extra": {
         "laravel": {
@@ -30,5 +39,22 @@
                 "TamkeenTech\\LaravelEnumStateMachine\\LaravelEnumStateMachinesProvider"
             ]
         }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "lint": [
+            "@php vendor/bin/phpstan analyse --verbose --ansi"
+        ]
     }
 }
