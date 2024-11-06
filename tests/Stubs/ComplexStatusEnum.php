@@ -2,8 +2,12 @@
 
 namespace TamkeenTech\LaravelEnumStateMachine\Tests\Stubs;
 
+use TamkeenTech\LaravelEnumStateMachine\Traits\StateMachine;
+
 enum ComplexStatusEnum: string
 {
+    use StateMachine;
+
     case DRAFT = 'draft';
     case PENDING_REVIEW = 'pending_review';
     case IN_REVIEW = 'in_review';
@@ -61,5 +65,10 @@ enum ComplexStatusEnum: string
             ],
             self::DELETED => []
         };
+    }
+
+    public function initialState(): array
+    {
+        return [self::DRAFT, self::PENDING_REVIEW]; // Example: Multiple initial states
     }
 }

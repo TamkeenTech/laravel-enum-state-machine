@@ -2,24 +2,43 @@
 
 namespace TamkeenTech\LaravelEnumStateMachine\Tests;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
-use Orchestra\Testbench\Concerns\WithWorkbench;
+use Illuminate\Database\Schema\Blueprint;
+use Orchestra\Testbench\Attributes\WithEnv;
+use Orchestra\Testbench\TestCase as Orchestra;
 use TamkeenTech\LaravelEnumStateMachine\Providers\LaravelEnumStateMachinesProvider;
 
-class TestCase extends BaseTestCase
+#[WithEnv('DB_CONNECTION', 'sqlite')]
+abstract class TestCase extends Orchestra
 {
-    use WithWorkbench;
+    protected function setUp(): void
+    {
+        parent::setUp();
 
-    /**
-     * Get package providers.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return array<int, class-string>
-     */
-    protected function getPackageProviders($app): array
+        $this->setUpDatabase();
+    }
+
+    protected function getPackageProviders($app)
     {
         return [
             LaravelEnumStateMachinesProvider::class,
         ];
+    }
+
+    protected function setUpDatabase()
+    {
+        $this->app['db']->connection()->getSchemaBuilder()->create('test_models', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('status')->nullable();
+            $table->timestamps();
+        });
+
+        $this->app['db']->connection()->getSchemaBuilder()->create('state_machine_histories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('from')->nullable();
+            $table->string('to')->nullable();
+            $table->string('field');
+            $table->morphs('model');
+            $table->timestamps();
+        });
     }
 }

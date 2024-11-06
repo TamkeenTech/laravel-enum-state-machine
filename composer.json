@@ -23,15 +23,16 @@
         {
             "name": "Shreif Ashraf",
             "email": "sh.ashraf@tamkeentech.sa",
-            "homepage": "https://theashraf.dev"
+            "homepage": "https://theshreif.dev"
         }
     ],
     "require": {
-        "laravel/framework": "^10.0|^11.0"
+        "laravel/framework": "^11.0",
+        "php": "^8.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^8.0",
-        "phpunit/phpunit": "^10.0"
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^9.5.10|^10.0"
     },
     "extra": {
         "laravel": {
@@ -55,6 +56,16 @@
         ],
         "lint": [
             "@php vendor/bin/phpstan analyse --verbose --ansi"
+        ],
+        "test-l10": [
+            "@composer require \"laravel/framework:^10.0\" --no-update",
+            "@composer update",
+            "@php vendor/bin/phpunit"
+        ],
+        "test-l11": [
+            "@composer require \"laravel/framework:^11.0\" --no-update",
+            "@composer update",
+            "@php vendor/bin/phpunit"
         ]
     }
 }
