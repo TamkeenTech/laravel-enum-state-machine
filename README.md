@@ -22,7 +22,7 @@ php artisan vendor:publish --tag=enum-state-machine-migrations
 To publish the config file, you can use the following command:
 
 ```bash
-php artisan vendor:publish --tag=enum-state-machine-config
+php artisan vendor:publish --tag=enum-state-machine-configs
 ```
 
 # Usage

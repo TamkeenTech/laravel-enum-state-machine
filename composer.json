@@ -37,7 +37,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TamkeenTech\\LaravelEnumStateMachine\\LaravelEnumStateMachinesProvider"
+                "TamkeenTech\\LaravelEnumStateMachine\\Providers\\LaravelEnumStateMachinesProvider"
             ]
         }
     },
