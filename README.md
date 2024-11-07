@@ -19,6 +19,12 @@ Next, if you going to record the history
 php artisan vendor:publish --tag=enum-state-machine-migrations
 ```
 
+To publish the config file, you can use the following command:
+
+```bash
+php artisan vendor:publish --tag=enum-state-machine-config
+```
+
 # Usage
 Imagine you have bill with statuses, so at your bill model you will need to use `HasStateMachines` trait, and define your `protected $stateMachines` array variable to include all the fields that you going to apply the state machine on, and finally an optional variable `protected $recordStateHistory` boolean to either save history or not.
 
@@ -135,7 +141,7 @@ This command will create a visual representation of your state machine as a PNG 
 # Helper Methods
 The `StateMachine` trait provides several helper methods to make working with state transitions easier.
 
-## `canTransitTo`
+### `canTransitTo`
 This method checks if the current state can transition to a given state.
 
 **Example**
@@ -148,7 +154,7 @@ if ($billStatus->canTransitTo(BillStatus::PAID)) {
 }
 ```
 
-## `inInitialState`
+### `inInitialState`
 This method checks if the current state is one of the allowed initial states.
 
 **Example**
@@ -161,7 +167,7 @@ if ($billStatus->inInitialState()) {
 }
 ```
 
-## `is`
+### `is`
 This method checks if the current state is equal to a given state.
 
 **Example**
