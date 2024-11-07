@@ -16,7 +16,7 @@ class LaravelEnumStateMachinesProvider extends ServiceProvider
 
             $this->publishes([
                 __DIR__.'/../../config/enum-diagram.php' => config_path('enum-diagram.php'),
-            ], 'enum-state-machine-congifs');
+            ], 'enum-state-machine-configs');
 
             $this->commands([
                 GenerateStatusFlowDiagram::class,

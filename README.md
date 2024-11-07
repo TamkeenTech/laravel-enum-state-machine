@@ -99,6 +99,81 @@ Now you are all done, you can start writing your code safely. So now if your tri
     'status' => BillStatus::REFUNDED
   ]);
   ```
+
+# State History Recording
+When you enable state history recording by setting protected `$recordStateHistory = true` in your model, the package will automatically track all state changes for the fields defined in `$stateMachines`.
+
+Each state change will be recorded in the state_machine_histories table with the following information:
+- The previous state (from)
+- The new state (to)
+- The field name that changed
+- The model type and ID
+- Timestamps of the change
+
+You can access the state history through the stateHistory relationship:
+
+```php
+$bill = Bill::find(1);
+$bill->stateHistory;
+```
+
+# Flow Diagram Generation
+You can generate a flow diagram of your state machine using the following command:
+
+```bash
+php artisan enum:flow-diagram "App\Enums\BillStatus"
+```
+
+You can specify a custom output directory using the --output option
+
+```bash
+php artisan enum:flow-diagram "App\Enums\BillStatus" --output=/custom/path
+```
+
+This command will create a visual representation of your state machine as a PNG file, making it easier to understand the transitions between states.
+
+# Helper Methods
+The `StateMachine` trait provides several helper methods to make working with state transitions easier.
+
+## `canTransitTo`
+This method checks if the current state can transition to a given state.
+
+**Example**
+
+```php
+$billStatus = BillStatus::PENDING;
+
+if ($billStatus->canTransitTo(BillStatus::PAID)) {
+    // Do something
+}
+```
+
+## `inInitialState`
+This method checks if the current state is one of the allowed initial states.
+
+**Example**
+
+```php
+$billStatus = BillStatus::PENDING;
+
+if ($billStatus->inInitialState()) {
+    // Do something
+}
+```
+
+## `is`
+This method checks if the current state is equal to a given state.
+
+**Example**
+
+```php
+$billStatus = BillStatus::PENDING;
+
+if ($billStatus->is(BillStatus::PENDING)) {
+    // Do something
+}
+```
+
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
