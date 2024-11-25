@@ -10,9 +10,11 @@ class LaravelEnumStateMachinesProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__ . '/../database/migrations/create_state_histories_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_state_histories_table.php'),
-            ], 'enum-state-machine-migrations');
+            if (!(bool)glob(base_path('database/migrations/*_create_state_histories_table.php'))) {
+                $this->publishes([
+                    __DIR__ . '/../../database/migrations/create_state_histories_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_state_histories_table.php'),
+                ], 'enum-state-machine-migrations');
+            }
 
             $this->publishes([
                 __DIR__.'/../../config/enum-diagram.php' => config_path('enum-diagram.php'),
