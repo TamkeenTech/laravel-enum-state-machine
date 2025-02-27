@@ -9,3 +9,7 @@ All notable changes to `laravel-enum-state-machine` will be documented in this f
 ## v1.2.0 - 2024-11-07
 
 - Added support to create a visual representation of your state machine as a PNG file.
+
+## v2.0.0 - 2025-02-27
+
+- Added support for Laravel 12
