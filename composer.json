@@ -1,71 +1,81 @@
 {
-    "name": "tamkeen-tech/laravel-enum-state-machine",
-    "description": "Control your state using enums",
-    "keywords": [
-        "enum",
-        "state",
-        "state-machine",
-        "laravel"
-    ],
-    "type": "library",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "TamkeenTech\\LaravelEnumStateMachine\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "TamkeenTech\\LaravelEnumStateMachine\\Tests\\": "tests/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Shreif Ashraf",
-            "email": "sh.ashraf@tamkeentech.sa",
-            "homepage": "https://theshreif.dev"
-        }
-    ],
-    "require": {
-        "laravel/framework": "^10.0|^11.0|^12.0",
-        "php": "^8.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^8.0|^9.0",
-        "phpunit/phpunit": "^9.5.10|^10.0"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "TamkeenTech\\LaravelEnumStateMachine\\Providers\\LaravelEnumStateMachinesProvider"
-            ]
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "@clear",
-            "@prepare"
-        ],
-        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
-        "prepare": "@php vendor/bin/testbench package:discover --ansi",
-        "build": "@php vendor/bin/testbench workbench:build --ansi",
-        "serve": [
-            "Composer\\Config::disableProcessTimeout",
-            "@build",
-            "@php vendor/bin/testbench serve --ansi"
-        ],
-        "lint": [
-            "@php vendor/bin/phpstan analyse --verbose --ansi"
-        ],
-        "test-l10": [
-            "@composer require \"laravel/framework:^10.0\" --no-update",
-            "@composer update",
-            "@php vendor/bin/phpunit"
-        ],
-        "test-l11": [
-            "@composer require \"laravel/framework:^11.0\" --no-update",
-            "@composer update",
-            "@php vendor/bin/phpunit"
-        ]
+  "name": "tamkeen-tech/laravel-enum-state-machine",
+  "description": "Control your state using enums",
+  "keywords": [
+    "enum",
+    "state",
+    "state-machine",
+    "laravel"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "TamkeenTech\\LaravelEnumStateMachine\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TamkeenTech\\LaravelEnumStateMachine\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Shreif Ashraf",
+      "email": "sh.ashraf@tamkeentech.sa",
+      "homepage": "https://theshreif.dev"
+    }
+  ],
+  "require": {
+    "laravel/framework": "^13.0",
+    "php": "^8.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.0|^9.0|^10.0|^11.0",
+    "phpunit/phpunit": "^9.5.10|^10.0|^11.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "TamkeenTech\\LaravelEnumStateMachine\\Providers\\LaravelEnumStateMachinesProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@clear",
+      "@prepare"
+    ],
+    "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+    "prepare": "@php vendor/bin/testbench package:discover --ansi",
+    "build": "@php vendor/bin/testbench workbench:build --ansi",
+    "serve": [
+      "Composer\\Config::disableProcessTimeout",
+      "@build",
+      "@php vendor/bin/testbench serve --ansi"
+    ],
+    "lint": [
+      "@php vendor/bin/phpstan analyse --verbose --ansi"
+    ],
+    "test-l10": [
+      "@composer require \"laravel/framework:^10.0\" --no-update",
+      "@composer update",
+      "@php vendor/bin/phpunit"
+    ],
+    "test-l11": [
+      "@composer require \"laravel/framework:^11.0\" --no-update",
+      "@composer update",
+      "@php vendor/bin/phpunit"
+    ],
+    "test-l12": [
+      "@composer require \"laravel/framework:^12.0\" --no-update",
+      "@composer update",
+      "@php vendor/bin/phpunit"
+    ],
+    "test-l13": [
+      "@composer require \"laravel/framework:^13.0\" --no-update",
+      "@composer update",
+      "@php vendor/bin/phpunit"
+    ]
+  }
 }
